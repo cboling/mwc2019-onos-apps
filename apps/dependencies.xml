@@ -29,8 +29,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.opencord</groupId>
-            <artifactId>olt-app</artifactId>
+            <groupId>org.ctpd</groupId>
+            <artifactId>ctpd-olt-app</artifactId>
             <version>${olt.version}</version>
             <type>oar</type>
         </dependency>

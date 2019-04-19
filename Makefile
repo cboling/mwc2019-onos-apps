@@ -13,7 +13,7 @@ include $(MAKE_CONFIG)
 endif
 
 .PHONY: all
-all: build
+all: onos
 
 .PHONY: build
 build:

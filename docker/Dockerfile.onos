@@ -1,4 +1,5 @@
-FROM onosproject/onos:1.13.1 as build
+#FROM onosproject/onos:1.13.1 as build
+FROM voltha-tf-onos:tf-base as build
 MAINTAINER Open Networking Foundation <info@opennetworking.org>
 
 ENV BUILD_ROOT=/build
@@ -15,34 +16,16 @@ ENV KARAF_M2=${KARAF_ROOT}/system
 ENV APP_INSTALL_ROOT=/expand
 
 # Specify application versions to install
-ENV AAA_VERSION=1.6.0-SNAPSHOT \
-	CONFIG_VERSION=1.4.0-SNAPSHOT \
-	IGMP_VERSION=1.4.0-SNAPSHOT \
-	IGMP_PROXY_VERSION=1.2.0-SNAPSHOT \
-	MCAST_VERSION=1.4.0-SNAPSHOT \
-	OLT_VERSION=1.4.0-SNAPSHOT \
-	SADIS_VERSION=2.1.0-SNAPSHOT \
-	VTN_VERSION=1.6.0-SNAPSHOT \
-	L2_DHCP_RELAY_VERSION=1.4.0-SNAPSHOT
-
-ENV APPS="aaa-${AAA_VERSION} \
-	cord-config-${CONFIG_VERSION} \
-	igmp-${IGMP_VERSION} \
-	mcast-${MCAST_VERSION} \
-	olt-app-${OLT_VERSION} \
-	sadis-app-${SADIS_VERSION} \
-	vtn-${VTN_VERSION} \
-        aaa-${AAA_VERSION} \
-        onos-app-igmpproxy-${IGMP_PROXY_VERSION} \
-	dhcpl2relay-${L2_DHCP_RELAY_VERSION}"
-
+ENV OLT_VERSION=1.14.0
+ENV APPS="ctpd-olt-app-${OLT_VERSION}"
 # Install the applications
 COPY config/app-install.sh .
 RUN chmod 755 ./app-install.sh
 RUN ./app-install.sh
 
 # Create the final image coping over the installed applications from the build stage
-FROM onosproject/onos:1.13.1
+#FROM onosproject/onos:1.13.1
+FROM volta-tf-onos:tf-base
 
 # Install Key Store Options
 ENV JAVA_OPTS="${JAVA_OPTS:--DenableOFTLS=true -Djavax.net.ssl.keyStore=/home/sdn/wiki/onos.jks -Djavax.net.ssl.keyStorePassword=222222 -Djavax.net.ssl.trustStore=/home/sdn/wiki/onos.jks -Djavax.net.ssl.trustStorePassword=222222}"
