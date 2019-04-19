@@ -21,7 +21,7 @@ build:
 
 .PHONY: onos
 onos:
-	docker build -t cord/onos:latest -f docker/Dockerfile.onos .
+	docker build -t voltha-telefonica-onos:latest -f docker/Dockerfile.onos .
 
 .PHONY: publish
 publish:
