@@ -25,7 +25,7 @@ RUN ./app-install.sh
 
 # Create the final image coping over the installed applications from the build stage
 #FROM onosproject/onos:1.13.1
-FROM volta-tf-onos:tf-base
+FROM voltha-tf-onos:tf-base
 
 # Install Key Store Options
 ENV JAVA_OPTS="${JAVA_OPTS:--DenableOFTLS=true -Djavax.net.ssl.keyStore=/home/sdn/wiki/onos.jks -Djavax.net.ssl.keyStorePassword=222222 -Djavax.net.ssl.trustStore=/home/sdn/wiki/onos.jks -Djavax.net.ssl.trustStorePassword=222222}"
