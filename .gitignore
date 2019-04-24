@@ -54,3 +54,4 @@ apps/igmpproxy/
 apps/dhcpl2relay/
 
 /.idea/
+/apps/ctpd-olt/
