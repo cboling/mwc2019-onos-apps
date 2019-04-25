@@ -16,7 +16,7 @@ ENV KARAF_M2=${KARAF_ROOT}/system
 ENV APP_INSTALL_ROOT=/expand
 
 # Specify application versions to install
-ENV OLT_VERSION=1.14.0
+ENV OLT_VERSION=1.13.5
 ENV APPS="ctpd-olt-app-${OLT_VERSION}"
 # Install the applications
 COPY config/app-install.sh .
